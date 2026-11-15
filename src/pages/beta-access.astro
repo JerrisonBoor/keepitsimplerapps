@@ -1,0 +1,125 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Beta Tester Downloads | Keep It Simpler"
+  description="Private beta downloads for Keep It Simpler Android apps."
+  canonicalPath="/beta-access"
+  noIndex={true}
+>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-12 sm:py-20 space-y-10">
+    
+    <!-- Header -->
+    <div class="space-y-3 pb-6 border-b border-[#E7E2D8]">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
+        <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+        Private Beta Program &bull; Android 11+
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-stone-900">
+        Early Access APK Downloads
+      </h1>
+      <p class="text-stone-600 text-sm sm:text-base leading-relaxed">
+        Thank you for helping us test Keep It Simpler. Below are the latest beta APK builds for our first two apps. This page is unlisted and restricted to invited testers.
+      </p>
+    </div>
+
+    <!-- Download Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      
+      <!-- Card 1: The Simpler Budget -->
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-emerald-200 shadow-sm flex flex-col justify-between space-y-6">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+              The Simpler Budget
+            </span>
+            <span class="text-xs font-mono text-stone-500">v0.9.0-beta</span>
+          </div>
+          <h2 class="text-xl font-bold text-stone-900">
+            Envelope Budgeting
+          </h2>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            Test voice transaction drafting (e.g., “I spent $12.50 on lunch at Panera”), receipt scanning, and local envelope balances.
+          </p>
+          <div class="text-[11px] text-stone-500 space-y-1 pt-2 border-t border-stone-100">
+            <div>&bull; Requires Android 11 or newer</div>
+            <div>&bull; Architecture: arm64-v8a / universal</div>
+          </div>
+        </div>
+
+        <div>
+          <!-- Link points to the APK file placed in public/downloads/ -->
+          <a
+            href="/downloads/the-simpler-budget-beta.apk"
+            download
+            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white font-semibold text-sm transition shadow-xs"
+          >
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            <span>Download Budget APK</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 2: The Simpler Nutrition Tracker -->
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-amber-200 shadow-sm flex flex-col justify-between space-y-6">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-900 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200">
+              The Simpler Nutrition
+            </span>
+            <span class="text-xs font-mono text-stone-500">v0.9.0-beta</span>
+          </div>
+          <h2 class="text-xl font-bold text-stone-900">
+            Voice Food &amp; Macro Log
+          </h2>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            Test voice meal logging (e.g., “Three eggs, a strip steak, and two sourdough slices”), editable macro estimates, and on-device meal history.
+          </p>
+          <div class="text-[11px] text-stone-500 space-y-1 pt-2 border-t border-stone-100">
+            <div>&bull; Requires Android 11 or newer</div>
+            <div>&bull; Architecture: arm64-v8a / universal</div>
+          </div>
+        </div>
+
+        <div>
+          <!-- Link points to the APK file placed in public/downloads/ -->
+          <a
+            href="/downloads/the-simpler-nutrition-beta.apk"
+            download
+            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-amber-800 hover:bg-amber-900 text-white font-semibold text-sm transition shadow-xs"
+          >
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            <span>Download Nutrition APK</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Installation Instructions for Testers -->
+    <div class="bg-stone-900 text-stone-200 rounded-2xl p-6 sm:p-8 space-y-4 text-xs sm:text-sm">
+      <h3 class="text-base font-bold text-white flex items-center gap-2">
+        <svg class="w-5 h-5 text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        How to install the APK on Android
+      </h3>
+      <ol class="list-decimal pl-5 space-y-2 leading-relaxed text-stone-300">
+        <li>Tap the download button above from your Android phone's browser (e.g. Chrome).</li>
+        <li>When prompted that the file might be harmful (standard Android warning for files downloaded outside Google Play), tap <strong>Download anyway</strong>.</li>
+        <li>Once downloaded, open the APK from your Notifications or Files app.</li>
+        <li>If prompted, enable <strong>Allow from this source</strong> in your phone settings to permit the install.</li>
+        <li>Tap <strong>Install</strong>, then open the app and start testing!</li>
+      </ol>
+      <div class="pt-3 border-t border-stone-800 text-[11px] text-stone-400">
+        Found a bug or have feedback? Email us directly at <a href="mailto:info@foggybusiness.com" class="text-white underline">info@foggybusiness.com</a>.
+      </div>
+    </div>
+
+  </div>
+</Layout>

@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /beta-access/
+Disallow: /downloads/
 
 Sitemap: https://keepitsimpler.app/sitemap-index.xml
