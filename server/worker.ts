@@ -8,9 +8,20 @@ interface Env {
   ASSETS: { fetch: (request: Request) => Promise<Response> };
 }
 
+const GITHUB_RELEASE_BASE = 'https://github.com/JerrisonBoor/keepitsimplerapps/releases/download/v1.0.0-beta';
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
+
+    // Seamless download redirects for APKs (bypasses Cloudflare Workers 25MB asset limit)
+    if (url.pathname === '/downloads/SimplerBudgetBetaV-1.apk' || url.pathname === '/downloads/the-simpler-budget-beta.apk') {
+      return Response.redirect(`${GITHUB_RELEASE_BASE}/SimplerBudgetBetaV-1.apk`, 302);
+    }
+
+    if (url.pathname === '/downloads/SimplerNutritionBeta_v1.apk' || url.pathname === '/downloads/the-simpler-nutrition-beta.apk') {
+      return Response.redirect(`${GITHUB_RELEASE_BASE}/SimplerNutritionBeta_v1.apk`, 302);
+    }
 
     // Intercept form submissions
     if (url.pathname === '/api/signup' && request.method === 'POST') {

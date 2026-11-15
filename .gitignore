@@ -6,12 +6,14 @@ dist/
 # dependencies
 node_modules/
 
+# local large binaries (served via release redirect)
+public/downloads/*.apk
+
 # logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-
 
 # environment variables
 .env
