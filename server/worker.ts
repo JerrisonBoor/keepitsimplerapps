@@ -15,8 +15,12 @@ export default {
     const url = new URL(request.url);
 
     // Seamless download redirects for APKs (bypasses Cloudflare Workers 25MB asset limit)
-    if (url.pathname === '/downloads/SimplerBudgetBetaV-1.apk' || url.pathname === '/downloads/the-simpler-budget-beta.apk') {
-      return Response.redirect(`${GITHUB_RELEASE_BASE}/SimplerBudgetBetaV-1.apk`, 302);
+    if (
+      url.pathname === '/downloads/BudgetApp_Beta_v1.1.apk' ||
+      url.pathname === '/downloads/SimplerBudgetBetaV-1.apk' ||
+      url.pathname === '/downloads/the-simpler-budget-beta.apk'
+    ) {
+      return Response.redirect(`${GITHUB_RELEASE_BASE}/BudgetApp_Beta_v1.1.apk`, 302);
     }
 
     if (url.pathname === '/downloads/SimplerNutritionBeta_v1.apk' || url.pathname === '/downloads/the-simpler-nutrition-beta.apk') {
