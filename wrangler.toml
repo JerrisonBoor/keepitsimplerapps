@@ -15,4 +15,4 @@ database_id = "d9557df3-fef6-4da9-96f4-85a7519ff9c9"
 name = "SEND_EMAIL"
 
 [vars]
-NOTIFICATION_EMAIL = "j.d.boor27@gmail.com"
+NOTIFICATION_EMAIL = "info@foggybusiness.com"
