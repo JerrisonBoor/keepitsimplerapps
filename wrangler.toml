@@ -1,6 +1,20 @@
 #:schema node_modules/wrangler/config-schema.json
 name = "keepitsimplerapps"
+main = "server/worker.ts"
 compatibility_date = "2026-11-15"
 
 [assets]
 directory = "./dist"
+
+# Optional Cloudflare D1 Database binding:
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "keepitsimpler-signups"
+# database_id = "<your-d1-database-id>"
+
+# Optional Cloudflare Native Email Routing:
+# [[send_email]]
+# name = "SEND_EMAIL"
+
+# [vars]
+# NOTIFICATION_EMAIL = "your-email@example.com"
