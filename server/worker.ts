@@ -1,4 +1,5 @@
 import { createMimeMessage } from 'mimetext';
+import { EmailMessage } from 'cloudflare:email';
 
 interface Env {
   DB?: any;
@@ -59,8 +60,6 @@ export default {
               data: `New prelaunch signup received for Keep It Simpler!\n\nEmail: ${email}\nApps: ${apps}\nBeta Interest: ${betaInterest}\nTimestamp: ${date}\n`,
             });
 
-            // EmailMessage is a Cloudflare Workers global available when send_email binding is active
-            // @ts-ignore
             const emailMsg = new EmailMessage(sender, env.NOTIFICATION_EMAIL, msg.asRaw());
             await env.SEND_EMAIL.send(emailMsg);
           } catch (mailErr) {
