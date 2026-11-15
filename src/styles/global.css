@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    
+    /* Warm palette */
+    --color-bg-canvas: #FAF8F5;
+    --color-bg-card: #FFFFFF;
+    --color-bg-subtle: #F3EFE8;
+    --color-bg-elevated: #FFFFFF;
+    
+    --color-text-main: #1C1917;
+    --color-text-muted: #57534E;
+    --color-text-subtle: #78716C;
+    
+    --color-border-subtle: #E7E2D8;
+    --color-border-strong: #D3CCC0;
+    
+    /* Budget Accent (Muted Green) */
+    --color-budget: #2D6A4F;
+    --color-budget-hover: #22533D;
+    --color-budget-light: #EBF4F0;
+    --color-budget-border: #B7DAC7;
+    
+    /* Nutrition Accent (Warm Orange) */
+    --color-nutrition: #D96528;
+    --color-nutrition-hover: #BC521B;
+    --color-nutrition-light: #FDF2EC;
+    --color-nutrition-border: #F6CEB9;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg-canvas);
+    color: var(--color-text-main);
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  /* Accessible focus indicators */
+  :focus-visible {
+    outline: 2px solid #1C1917;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+/* Custom device mockup styling */
+.device-shadow {
+  box-shadow: 0 20px 40px -15px rgba(28, 25, 23, 0.12),
+              0 0 0 1px rgba(28, 25, 23, 0.08),
+              0 2px 4px rgba(28, 25, 23, 0.04);
+}
+
+.device-shadow-lg {
+  box-shadow: 0 30px 60px -20px rgba(28, 25, 23, 0.18),
+              0 0 0 1px rgba(28, 25, 23, 0.1),
+              0 4px 8px rgba(28, 25, 23, 0.05);
+}
+
+/* Badge pulse for live previews */
+@keyframes subtle-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.pulse-indicator {
+  animation: subtle-pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}

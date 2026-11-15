@@ -1,0 +1,104 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE } from '../data/site';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath?: string;
+  ogType?: 'website' | 'article';
+  activeApp?: 'budget' | 'nutrition' | 'home';
+}
+
+const {
+  title,
+  description,
+  canonicalPath = '',
+  ogType = 'website',
+  activeApp = 'home',
+} = Astro.props;
+
+const canonicalUrl = new URL(canonicalPath, SITE.url).href;
+const ogImage = new URL('/og-image.png', SITE.url).href;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content={SITE.name} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Fonts: Instrument Sans from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Robots -->
+    <meta name="robots" content="index, follow" />
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      'name': title,
+      'operatingSystem': 'Android 11+',
+      'applicationCategory': 'UtilitiesApplication',
+      'description': description,
+      'offers': {
+        '@type': 'Offer',
+        'price': '0',
+        'priceCurrency': 'USD',
+        'availability': 'https://schema.org/PreOrder'
+      },
+      'author': {
+        '@type': 'Organization',
+        'name': SITE.name,
+        'url': SITE.url
+      }
+    })} />
+  </head>
+  <body class="bg-[#FAF8F5] text-stone-900 antialiased selection:bg-stone-200">
+    <!-- Accessible Skip Link -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-stone-900 focus:text-white focus:rounded-md shadow-lg"
+    >
+      Skip to main content
+    </a>
+
+    <Header currentPath={canonicalPath} activeApp={activeApp} />
+
+    <main id="main-content" class="flex-1 flex flex-col">
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>

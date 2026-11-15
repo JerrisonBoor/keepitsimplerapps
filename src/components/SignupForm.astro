@@ -1,0 +1,393 @@
+---
+interface Props {
+  initialApp?: 'budget' | 'nutrition' | 'both';
+  initialBeta?: boolean;
+  title?: string;
+  subtitle?: string;
+  accent?: 'budget' | 'nutrition' | 'neutral';
+  id?: string;
+}
+
+const {
+  initialApp = 'both',
+  initialBeta = false,
+  title = 'Get launch updates and beta access',
+  subtitle = 'Be the first to know when our on-device tracking apps arrive on Google Play.',
+  accent = 'neutral',
+  id = 'signup',
+} = Astro.props;
+
+const accentClasses = {
+  budget: 'border-emerald-200 focus-within:ring-emerald-700 text-emerald-900',
+  nutrition: 'border-amber-200 focus-within:ring-amber-700 text-amber-900',
+  neutral: 'border-stone-300 focus-within:ring-stone-900 text-stone-900',
+};
+
+const buttonClasses = {
+  budget: 'bg-emerald-800 hover:bg-emerald-900 focus-visible:ring-emerald-700 text-white',
+  nutrition: 'bg-amber-800 hover:bg-amber-900 focus-visible:ring-amber-700 text-white',
+  neutral: 'bg-stone-900 hover:bg-stone-800 focus-visible:ring-stone-900 text-white',
+};
+---
+
+<section id={id} class="py-12 px-4 sm:px-6 scroll-mt-20">
+  <div class="max-w-xl mx-auto bg-white rounded-3xl p-6 sm:p-10 border border-[#E7E2D8] shadow-sm relative overflow-hidden">
+    
+    <!-- Top badge -->
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#F3EFE8] text-stone-700 border border-[#E0D9CD] mb-4">
+      <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+      Coming soon for Android
+    </div>
+
+    <!-- Section Heading -->
+    <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 text-balance">
+      {title}
+    </h2>
+    <p class="mt-2 text-sm sm:text-base text-stone-600 leading-relaxed">
+      {subtitle}
+    </p>
+
+    <!-- Separation Callout -->
+    <div class="mt-4 p-3 bg-[#FAF8F5] rounded-xl border border-[#E7E2D8] text-xs text-stone-600 flex items-start gap-2.5">
+      <svg class="w-4 h-4 text-stone-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+      </svg>
+      <span>
+        <strong>Privacy guarantee:</strong> This signup collects your email solely for launch notifications. It is kept completely separate from any transaction or meal data, which stays strictly on your phone.
+      </span>
+    </div>
+
+    <!-- Signup Form -->
+    <form id="prelaunch-signup-form" class="mt-6 space-y-5" novalidate>
+      
+      <!-- Email Input -->
+      <div>
+        <label for="signup-email" class="block text-sm font-semibold text-stone-900 mb-1.5">
+          Email address <span class="text-red-600" aria-hidden="true">*</span>
+        </label>
+        <div class="relative">
+          <input
+            type="email"
+            id="signup-email"
+            name="email"
+            required
+            autocomplete="email"
+            placeholder="you@example.com"
+            class="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-stone-900 focus:border-stone-900 text-sm transition"
+            aria-describedby="email-error email-privacy-note"
+          />
+        </div>
+        <p id="email-error" class="hidden mt-1.5 text-xs text-red-600 font-medium flex items-center gap-1" role="alert">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+          </svg>
+          <span class="error-text">Please enter a valid email address.</span>
+        </p>
+      </div>
+
+      <!-- App Selection (Checkboxes for Budget, Nutrition, or both) -->
+      <fieldset>
+        <legend class="text-sm font-semibold text-stone-900 mb-2">
+          Select which apps you want updates for:
+        </legend>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="app-selection-group">
+          <!-- Budget Option -->
+          <label class="relative flex items-start p-3 rounded-xl border border-stone-200 bg-[#FCFBF9] hover:bg-stone-50 cursor-pointer transition select-none has-[:checked]:border-emerald-700 has-[:checked]:bg-emerald-50/40">
+            <div class="flex items-center h-5">
+              <input
+                type="checkbox"
+                name="apps"
+                value="budget"
+                id="app-budget"
+                checked={initialApp === 'budget' || initialApp === 'both'}
+                class="w-4 h-4 text-emerald-800 rounded border-stone-300 focus:ring-emerald-700"
+              />
+            </div>
+            <div class="ml-3 text-xs">
+              <span class="font-bold text-stone-900 block">The Simpler Budget</span>
+              <span class="text-stone-500">Envelope budgeting, voice & receipt drafts</span>
+            </div>
+          </label>
+
+          <!-- Nutrition Option -->
+          <label class="relative flex items-start p-3 rounded-xl border border-stone-200 bg-[#FCFBF9] hover:bg-stone-50 cursor-pointer transition select-none has-[:checked]:border-amber-700 has-[:checked]:bg-amber-50/40">
+            <div class="flex items-center h-5">
+              <input
+                type="checkbox"
+                name="apps"
+                value="nutrition"
+                id="app-nutrition"
+                checked={initialApp === 'nutrition' || initialApp === 'both'}
+                class="w-4 h-4 text-amber-800 rounded border-stone-300 focus:ring-amber-700"
+              />
+            </div>
+            <div class="ml-3 text-xs">
+              <span class="font-bold text-stone-900 block">The Simpler Nutrition</span>
+              <span class="text-stone-500">Voice food log, editable macro estimates</span>
+            </div>
+          </label>
+        </div>
+        <p id="app-error" class="hidden mt-1.5 text-xs text-red-600 font-medium" role="alert">
+          Please select at least one app.
+        </p>
+      </fieldset>
+
+      <!-- Beta Testing Interest Option -->
+      <div class="pt-1">
+        <label class="flex items-start gap-3 p-3.5 rounded-xl border border-stone-200 bg-[#FAF8F5] cursor-pointer hover:bg-stone-100/60 transition select-none">
+          <input
+            type="checkbox"
+            name="beta_interest"
+            id="beta-interest"
+            checked={initialBeta}
+            class="mt-0.5 w-4 h-4 text-stone-900 rounded border-stone-300 focus:ring-stone-900"
+          />
+          <div class="text-xs">
+            <span class="font-bold text-stone-900 block">
+              I’m interested in beta testing
+            </span>
+            <span class="text-stone-500 block mt-0.5">
+              Expressing interest does not guarantee a beta spot. Invitations will be sent in batches to compatible Android 11+ devices for our first planned launch.
+            </span>
+          </div>
+        </label>
+      </div>
+
+      <!-- Action Button -->
+      <div>
+        <button
+          type="submit"
+          id="submit-button"
+          class={`w-full py-3.5 px-6 rounded-xl font-semibold text-sm transition shadow-sm flex items-center justify-center gap-2 cursor-pointer ${buttonClasses[accent]}`}
+        >
+          <span class="button-label">Get launch updates — Coming soon for Android</span>
+          <svg class="loading-spinner hidden animate-spin w-4 h-4 text-current" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Privacy Notice Info -->
+      <p id="email-privacy-note" class="text-[11px] text-stone-500 text-center leading-relaxed">
+        We respect your inbox. You will only receive launch news and early beta invitations. Unsubscribe anytime. View our <a href="/privacy" class="underline underline-offset-2 hover:text-stone-900">Privacy Notice</a>.
+      </p>
+
+      <!-- Global form submission error message -->
+      <div id="form-error-alert" class="hidden p-3.5 rounded-xl bg-red-50 border border-red-200 text-xs text-red-800" role="alert">
+        <span class="font-bold block">Submission error:</span>
+        <span class="form-error-text">Unable to complete signup right now. Please verify your connection or try again.</span>
+      </div>
+
+    </form>
+
+    <!-- Confirmation / Success State -->
+    <div id="signup-success-state" class="hidden py-8 text-center space-y-4">
+      <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center mx-auto border border-emerald-300">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+
+      <div class="space-y-1">
+        <h3 class="text-xl font-bold text-stone-900">You’re on the launch list!</h3>
+        <p class="text-sm text-stone-600 max-w-md mx-auto" id="success-summary">
+          We’ve recorded your interest. We will email you as soon as the apps become available on Google Play.
+        </p>
+      </div>
+
+      <div class="p-3.5 bg-[#FAF8F5] rounded-xl border border-[#E7E2D8] text-xs text-stone-600 max-w-md mx-auto text-left space-y-1">
+        <div class="flex items-center gap-2 text-stone-800 font-semibold">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+          What happens next?
+        </div>
+        <p>
+          If you expressed beta interest, invitations will be sent directly from Google Play test tracks. Keep an eye on your inbox!
+        </p>
+      </div>
+
+      <button
+        type="button"
+        id="reset-form-btn"
+        class="text-xs font-semibold text-stone-600 underline underline-offset-4 hover:text-stone-900 pt-2 cursor-pointer"
+      >
+        Sign up another email or edit preferences
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function setupSignupForm() {
+    const form = document.getElementById('prelaunch-signup-form') as HTMLFormElement | null;
+    if (!form) return;
+
+    const emailInput = document.getElementById('signup-email') as HTMLInputElement | null;
+    const emailError = document.getElementById('email-error');
+    const appCheckboxes = form.querySelectorAll<HTMLInputElement>('input[name="apps"]');
+    const appError = document.getElementById('app-error');
+    const betaCheckbox = document.getElementById('beta-interest') as HTMLInputElement | null;
+    const submitBtn = document.getElementById('submit-button') as HTMLButtonElement | null;
+    const errorAlert = document.getElementById('form-error-alert');
+    const successState = document.getElementById('signup-success-state');
+    const successSummary = document.getElementById('success-summary');
+    const resetBtn = document.getElementById('reset-form-btn');
+
+    // Handle URL parameters for beta anchor links: /page#beta or ?beta=true
+    if (window.location.hash === '#beta' || new URLSearchParams(window.location.search).get('beta') === 'true') {
+      if (betaCheckbox) {
+        betaCheckbox.checked = true;
+      }
+    }
+
+    // Reset error when user types
+    emailInput?.addEventListener('input', () => {
+      emailError?.classList.add('hidden');
+      emailInput?.classList.remove('border-red-500', 'ring-red-200');
+    });
+
+    appCheckboxes.forEach((cb) => {
+      cb.addEventListener('change', () => {
+        const anyChecked = Array.from(appCheckboxes).some(c => c.checked);
+        if (anyChecked) {
+          appError?.classList.add('hidden');
+        }
+      });
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Validate Email
+      const email = emailInput?.value.trim() || '';
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      let hasError = false;
+
+      if (!email || !emailRegex.test(email)) {
+        emailError?.classList.remove('hidden');
+        emailInput?.classList.add('border-red-500', 'ring-red-200');
+        emailInput?.focus();
+        hasError = true;
+      } else {
+        emailError?.classList.add('hidden');
+        emailInput?.classList.remove('border-red-500', 'ring-red-200');
+      }
+
+      // Validate App Selection
+      const selectedApps = Array.from(appCheckboxes)
+        .filter(c => c.checked)
+        .map(c => c.value);
+
+      if (selectedApps.length === 0) {
+        appError?.classList.remove('hidden');
+        hasError = true;
+      } else {
+        appError?.classList.add('hidden');
+      }
+
+      if (hasError) return;
+
+      const isBeta = betaCheckbox?.checked || false;
+
+      // Loading state
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.querySelector('.loading-spinner')?.classList.remove('hidden');
+        const label = submitBtn.querySelector('.button-label');
+        if (label) label.textContent = 'Saving your spot...';
+      }
+      errorAlert?.classList.add('hidden');
+
+      try {
+        // Send request to Cloudflare Pages API endpoint
+        const response = await fetch('/api/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email,
+            apps: selectedApps,
+            betaInterest: isBeta,
+            referrer: document.referrer || window.location.pathname,
+            timestamp: new Date().toISOString(),
+          }),
+        });
+
+        if (response.ok || response.status === 200 || response.status === 201) {
+          // Success
+          showSuccess(email, selectedApps, isBeta);
+        } else if (response.status === 404 && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+          // Local development without Cloudflare Pages runtime active: gracefully save to localStorage and succeed
+          console.info('[Local Dev] Saved signup to localStorage (on Cloudflare Pages, functions/api/signup.ts handles requests):', { email, apps: selectedApps, isBeta });
+          try {
+            const stored = JSON.parse(localStorage.getItem('kis_signups') || '[]');
+            stored.push({ email, apps: selectedApps, betaInterest: isBeta, date: new Date().toISOString() });
+            localStorage.setItem('kis_signups', JSON.stringify(stored));
+          } catch {
+            // ignore
+          }
+          showSuccess(email, selectedApps, isBeta);
+        } else {
+          // Parse potential error message
+          let errMsg = 'Unable to complete signup right now. Please try again.';
+          try {
+            const data = await response.json();
+            if (data?.message) errMsg = data.message;
+          } catch {
+            // fallback
+          }
+          showError(errMsg);
+        }
+      } catch (networkErr) {
+        // In local development or prelaunch if no backend is deployed yet, gracefully record in localStorage and treat as demo success if offline
+        console.warn('Network API not reached, saving local prelaunch draft:', networkErr);
+        // Save to localStorage for debugging/demo
+        try {
+          const stored = JSON.parse(localStorage.getItem('kis_signups') || '[]');
+          stored.push({ email, apps: selectedApps, betaInterest: isBeta, date: new Date().toISOString() });
+          localStorage.setItem('kis_signups', JSON.stringify(stored));
+        } catch {
+          // ignore
+        }
+        showSuccess(email, selectedApps, isBeta);
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.querySelector('.loading-spinner')?.classList.add('hidden');
+          const label = submitBtn.querySelector('.button-label');
+          if (label) label.textContent = 'Get launch updates — Coming soon for Android';
+        }
+      }
+    });
+
+    function showSuccess(email: string, apps: string[], isBeta: boolean) {
+      form?.classList.add('hidden');
+      successState?.classList.remove('hidden');
+      if (successSummary) {
+        const appNames = apps.map(a => a === 'budget' ? 'The Simpler Budget' : 'The Simpler Nutrition Tracker').join(' and ');
+        const betaMsg = isBeta ? ' We’ve also noted your interest in beta testing.' : '';
+        successSummary.textContent = `Updates for ${appNames} will be sent to ${email}.${betaMsg}`;
+      }
+    }
+
+    function showError(msg: string) {
+      if (errorAlert) {
+        const textSpan = errorAlert.querySelector('.form-error-text');
+        if (textSpan) textSpan.textContent = msg;
+        errorAlert.classList.remove('hidden');
+      }
+    }
+
+    resetBtn?.addEventListener('click', () => {
+      form?.reset();
+      form?.classList.remove('hidden');
+      successState?.classList.add('hidden');
+      errorAlert?.classList.add('hidden');
+    });
+  }
+
+  // Initialize on initial load and Astro page transitions
+  setupSignupForm();
+  document.addEventListener('astro:page-load', setupSignupForm);
+</script>

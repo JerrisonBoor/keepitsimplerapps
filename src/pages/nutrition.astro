@@ -1,0 +1,334 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NutritionPreview from '../components/NutritionPreview.astro';
+import SignupForm from '../components/SignupForm.astro';
+import { getAppById } from '../data/apps';
+
+const app = getAppById('nutrition')!;
+---
+
+<Layout
+  title="The Simpler Nutrition Tracker | Android Voice Food Log"
+  description="Log a meal by saying what you ate with an Android voice food log and calorie and macro tracker. Describe your meal, review editable estimates, and save privately."
+  canonicalPath="/nutrition"
+  activeApp="nutrition"
+>
+  <!-- Hero Section -->
+  <section class="relative pt-12 pb-16 sm:pt-20 sm:pb-24 px-4 sm:px-6 overflow-hidden">
+    <!-- Subtle warm orange background glow -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-amber-100/40 blur-3xl -z-10 rounded-full pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto text-center space-y-6">
+      
+      <!-- Badges -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-amber-50 text-amber-900 border border-amber-200">
+        <span class="w-2 h-2 rounded-full bg-amber-600"></span>
+        <span>Coming soon for Android &bull; The Simpler Nutrition Tracker</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="text-4xl sm:text-6xl font-bold tracking-tight text-stone-900 text-balance leading-[1.12]">
+        Log a meal by saying what you ate.
+      </h1>
+
+      <!-- Supporting copy -->
+      <p class="max-w-2xl mx-auto text-lg sm:text-xl text-stone-600 leading-relaxed text-balance">
+        Describe your meal, review an estimate of calories and macros, and adjust the details before you save.
+      </p>
+
+      <!-- CTAs -->
+      <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+        <!-- Primary CTA: Get nutrition app updates -->
+        <a
+          href="#signup"
+          class="w-full sm:w-auto px-7 py-3.5 rounded-full font-semibold text-sm bg-amber-800 hover:bg-amber-900 text-white shadow-sm transition flex items-center justify-center gap-2"
+        >
+          <span>Get nutrition app updates</span>
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </a>
+
+        <!-- Secondary CTA: I'm interested in beta testing -->
+        <a
+          href="#signup?beta=true"
+          id="hero-beta-btn"
+          class="w-full sm:w-auto px-7 py-3.5 rounded-full font-semibold text-sm bg-white hover:bg-amber-50/50 text-amber-900 border border-amber-200 shadow-2xs transition flex items-center justify-center"
+        >
+          I’m interested in beta testing
+        </a>
+      </div>
+
+      <div class="pt-2 text-xs text-stone-500">
+        Coming soon for Android &bull; Built-in AI estimates calories and macros from a meal description
+      </div>
+
+    </div>
+
+    <!-- Live Preview Showcase -->
+    <div class="mt-12 sm:mt-16 max-w-md mx-auto">
+      <NutritionPreview />
+    </div>
+  </section>
+
+  <!-- Concrete Walkthrough: Everyday Example -->
+  <section class="py-16 sm:py-24 px-4 sm:px-6 bg-[#F3EFE8]/50 border-y border-[#E7E2D8]">
+    <div class="max-w-5xl mx-auto space-y-16">
+      
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-3xl font-bold tracking-tight text-stone-900">
+          How logging a meal works
+        </h2>
+        <p class="mt-3 text-stone-600 text-sm sm:text-base leading-relaxed">
+          Skip searching through hundreds of confusing database entries. Describe your plate naturally: built-in AI estimates calories and macros from your meal description, presents an editable breakdown, and lets you review before saving.
+        </p>
+      </div>
+
+      <!-- Step-by-step walkthrough cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Step 1: Voice Meal Description -->
+        <div class="bg-white rounded-2xl p-6 border border-[#E7E2D8] shadow-xs relative flex flex-col justify-between">
+          <div>
+            <div class="w-8 h-8 rounded-full bg-amber-100 text-amber-800 font-bold text-xs flex items-center justify-center mb-4 border border-amber-300">
+              1
+            </div>
+            <h3 class="text-base font-bold text-stone-900 mb-2">
+              Speak your meal
+            </h3>
+            <p class="text-xs text-stone-600 leading-relaxed">
+              Tap record and describe your meal naturally in plain speech:
+            </p>
+            <div class="mt-3 p-3 bg-amber-50/70 rounded-xl border border-amber-200/70 text-xs font-medium text-amber-950 italic">
+              “Three eggs, a New York strip steak, and two slices of sourdough.”
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-stone-100 text-[11px] text-stone-500">
+            Captures the entire meal in one quick sentence.
+          </div>
+        </div>
+
+        <!-- Step 2: Review Breakdown & Editable Estimates -->
+        <div class="bg-white rounded-2xl p-6 border-2 border-amber-700 shadow-sm relative flex flex-col justify-between">
+          <div class="absolute -top-3 right-4 px-2.5 py-0.5 rounded-full bg-amber-800 text-white text-[10px] font-bold tracking-wide uppercase">
+            Review Step
+          </div>
+          <div>
+            <div class="w-8 h-8 rounded-full bg-amber-800 text-white font-bold text-xs flex items-center justify-center mb-4">
+              2
+            </div>
+            <h3 class="text-base font-bold text-stone-900 mb-2">
+              Review &amp; edit estimates
+            </h3>
+            <p class="text-xs text-stone-600 leading-relaxed mb-3">
+              The app separates your speech into individual foods with estimated portions and macros:
+            </p>
+            <div class="space-y-1.5 text-xs bg-stone-50 p-2.5 rounded-xl border border-stone-200">
+              <div class="flex justify-between items-center pb-1 border-b border-stone-200">
+                <span class="font-bold text-stone-900">Total estimated energy:</span>
+                <span class="font-bold text-amber-800">~970 kcal (est.)</span>
+              </div>
+              <div class="text-[11px] text-stone-600 space-y-1 pt-1">
+                <div>&bull; 3 large eggs (~210 kcal)</div>
+                <div>&bull; NY strip steak, 8 oz (~520 kcal)</div>
+                <div>&bull; Sourdough, 2 slices (~240 kcal)</div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-stone-100 text-[11px] text-stone-600 font-medium">
+            Sample numbers are estimates. Tweak any portion before saving.
+          </div>
+        </div>
+
+        <!-- Step 3: Review Now or Draft for Later -->
+        <div class="bg-white rounded-2xl p-6 border border-[#E7E2D8] shadow-xs relative flex flex-col justify-between">
+          <div>
+            <div class="w-8 h-8 rounded-full bg-amber-100 text-amber-800 font-bold text-xs flex items-center justify-center mb-4 border border-amber-300">
+              3
+            </div>
+            <h3 class="text-base font-bold text-stone-900 mb-2">
+              Save now or review later
+            </h3>
+            <p class="text-xs text-stone-600 leading-relaxed">
+              Confirm in seconds at the table, or save an audio draft to review portions and macros when you have a free moment.
+            </p>
+            <div class="mt-3 p-3 bg-stone-50 rounded-xl border border-stone-200 text-xs space-y-2">
+              <div class="flex items-center gap-2 text-stone-800 font-medium">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
+                Instant review or quick draft queue
+              </div>
+              <p class="text-[11px] text-stone-500">
+                Never interrupt a meal. Capture now, inspect later.
+              </p>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-stone-100 text-[11px] text-stone-500">
+            Stored privately in your on-device meal history.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Feature Highlight: On-Device Meal History -->
+      <div class="bg-white rounded-3xl p-6 sm:p-10 border border-[#E7E2D8] shadow-xs">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div class="space-y-4">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-900 border border-amber-200">
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              On-device meal history
+            </div>
+            <h3 class="text-2xl font-bold text-stone-900">
+              Your dietary history stays strictly yours
+            </h3>
+            <p class="text-sm text-stone-600 leading-relaxed">
+              Every meal you log builds a private, easily searchable timeline on your Android device. Track trends over time without uploading your eating habits to advertisers or health insurers.
+            </p>
+            <ul class="space-y-2 text-xs text-stone-700">
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-amber-700 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span><strong>Daily intake summaries:</strong> See your estimated calories, protein, carbs, and fats at a glance.</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-amber-700 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span><strong>Quick adjustments:</strong> Forgot an ingredient? Tap any past meal to update portions or add a snack.</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-amber-700 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span><strong>No mandatory online profile:</strong> Open the app and log without creating a third-party login.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Timeline UI representation -->
+          <div class="bg-[#FAF8F5] p-5 rounded-2xl border border-stone-200 space-y-3 text-xs">
+            <div class="flex justify-between items-center pb-2 border-b border-stone-200">
+              <span class="font-bold text-stone-800">Today’s Meal Timeline</span>
+              <span class="text-[11px] font-semibold text-amber-900 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">~1,740 kcal total (est.)</span>
+            </div>
+
+            <!-- Breakfast item -->
+            <div class="bg-white p-3 rounded-xl border border-stone-200 space-y-1">
+              <div class="flex justify-between font-semibold text-stone-900 text-[11px]">
+                <span>Breakfast &bull; 8:30 AM</span>
+                <span class="text-stone-600 font-mono">~420 kcal</span>
+              </div>
+              <p class="text-stone-500 text-[10px]">Rolled oats with blueberries, almond milk, black coffee</p>
+              <div class="text-[9px] text-stone-400">14g P &bull; 68g C &bull; 8g F</div>
+            </div>
+
+            <!-- Lunch item (from voice draft) -->
+            <div class="bg-white p-3 rounded-xl border-2 border-amber-700 space-y-1">
+              <div class="flex justify-between font-semibold text-stone-900 text-[11px]">
+                <span class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-amber-600"></span>
+                  Lunch &bull; Just Logged
+                </span>
+                <span class="text-amber-800 font-mono font-bold">~970 kcal (est.)</span>
+              </div>
+              <p class="text-stone-600 text-[10px]">3 eggs, 8 oz NY strip steak, 2 slices sourdough</p>
+              <div class="text-[9px] text-amber-800 font-medium">80g P &bull; 47g C &bull; 49g F</div>
+            </div>
+
+            <div class="pt-1 text-[10px] text-stone-400 text-center">
+              All records stored locally in your phone’s private app sandbox.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Focused Logging & Reviewing Philosophy -->
+  <section class="py-16 sm:py-20 px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto bg-[#FAF8F5] rounded-3xl p-8 sm:p-12 border border-[#E7E2D8] space-y-6">
+      <div class="max-w-2xl">
+        <h3 class="text-2xl font-bold text-stone-900">
+          Focused on what matters: logging meals without friction
+        </h3>
+        <p class="mt-2 text-stone-600 text-sm leading-relaxed">
+          Most nutrition apps fail because logging meals takes too much time. You get bogged down searching barcode registries, parsing conflicting brand entries, or managing rigid meal plans. The Simpler Nutrition Tracker is designed to do one thing exceptionally well: capture what you ate in seconds, provide an editable estimate, and let you get on with your day.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-[#E7E2D8] text-xs">
+        <div class="p-3 bg-white rounded-xl border border-stone-200 space-y-1">
+          <span class="font-bold text-stone-900 block">Fast voice input</span>
+          <p class="text-stone-500">Say what you ate in natural language without hunting menus.</p>
+        </div>
+        <div class="p-3 bg-white rounded-xl border border-stone-200 space-y-1">
+          <span class="font-bold text-stone-900 block">Transparent estimates</span>
+          <p class="text-stone-500">Clearly labeled estimated macros with one-tap portion adjustment.</p>
+        </div>
+        <div class="p-3 bg-white rounded-xl border border-stone-200 space-y-1">
+          <span class="font-bold text-stone-900 block">Strict on-device privacy</span>
+          <p class="text-stone-500">No public accounts, social feeds, or shared personal health data.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 sm:py-24 px-4 sm:px-6 bg-[#F3EFE8]/40 border-t border-[#E7E2D8]">
+    <div class="max-w-3xl mx-auto space-y-8">
+      <div class="text-center">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-stone-900">
+          Frequently Asked Questions
+        </h2>
+        <p class="mt-2 text-stone-600 text-sm">
+          Everything you need to know about The Simpler Nutrition Tracker.
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        {app.faq.map((item, index) => (
+          <details class="group bg-white rounded-2xl border border-[#E7E2D8] p-5 transition [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between font-semibold text-stone-900 cursor-pointer text-sm sm:text-base select-none">
+              <span>{item.question}</span>
+              <span class="ml-4 shrink-0 w-6 h-6 rounded-full bg-stone-100 group-open:bg-amber-100 group-open:text-amber-800 text-stone-500 flex items-center justify-center transition">
+                <svg class="w-3.5 h-3.5 transform group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </summary>
+            <p class="mt-3 text-stone-600 text-xs sm:text-sm leading-relaxed border-t border-stone-100 pt-3">
+              {item.answer}
+            </p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Signup Form prefilled for Nutrition -->
+  <SignupForm
+    initialApp="nutrition"
+    title="Get updates on The Simpler Nutrition Tracker"
+    subtitle="Join the launch list to test voice meal logging. Coming soon for Android on Google Play."
+    accent="nutrition"
+  />
+</Layout>
+
+<script>
+  // Handle hero beta CTA click
+  const betaBtn = document.getElementById('hero-beta-btn');
+  betaBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    const signupSec = document.getElementById('signup');
+    const betaCheckbox = document.getElementById('beta-interest') as HTMLInputElement | null;
+    if (betaCheckbox) {
+      betaCheckbox.checked = true;
+    }
+    signupSec?.scrollIntoView({ behavior: 'smooth' });
+    const emailInput = document.getElementById('signup-email');
+    emailInput?.focus();
+  });
+</script>

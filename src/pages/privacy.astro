@@ -1,0 +1,110 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE } from '../data/site';
+---
+
+<Layout
+  title="Privacy Notice | Keep It Simpler"
+  description="Privacy notice for Keep It Simpler websites and Android applications. How we collect launch signup emails separately from on-device app records."
+  canonicalPath="/privacy"
+>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-12 sm:py-20 space-y-10">
+    
+    <!-- Header -->
+    <div class="space-y-3 pb-6 border-b border-[#E7E2D8]">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#F3EFE8] text-stone-700 border border-[#E0D9CD]">
+        Transparency &bull; Last updated November 2026
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-stone-900">
+        Privacy Notice
+      </h1>
+      <p class="text-stone-600 text-sm sm:text-base leading-relaxed">
+        Our core promise is simple: we design apps where your financial and nutritional tracking stays on your own Android phone.
+      </p>
+    </div>
+
+    <!-- Core Principle: Strict Separation -->
+    <div class="p-5 sm:p-6 bg-white rounded-2xl border-2 border-emerald-700 shadow-xs space-y-3">
+      <div class="flex items-center gap-2 text-emerald-900 font-bold text-sm sm:text-base">
+        <svg class="w-5 h-5 text-emerald-700 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+        Important: Strict Separation of Website and App Data
+      </div>
+      <p class="text-xs sm:text-sm text-stone-700 leading-relaxed">
+        The <strong>{SITE.name}</strong> website collects email addresses solely for prelaunch notifications and beta testing communications. This signup list is managed completely independently and is <strong>never linked to the data inside the mobile apps</strong>.
+      </p>
+    </div>
+
+    <!-- Sections -->
+    <div class="space-y-8 text-stone-700 text-sm leading-relaxed">
+      
+      <section class="space-y-2">
+        <h2 class="text-xl font-bold text-stone-900">1. Website Prelaunch Signups</h2>
+        <p>When you subscribe on our website ({SITE.domain}), we collect:</p>
+        <ul class="list-disc pl-5 space-y-1 text-xs sm:text-sm">
+          <li><strong>Email address:</strong> Used exclusively to send you launch notifications, major development updates, or invitations to test early builds on Google Play.</li>
+          <li><strong>App interest:</strong> Whether you expressed interest in The Simpler Budget, The Simpler Nutrition Tracker, or both.</li>
+          <li><strong>Optional beta interest:</strong> An optional indicator so we can invite you when Android beta testing cohorts open.</li>
+        </ul>
+        <p class="pt-1">
+          We will never sell, rent, or trade your email address with third-party advertisers or data brokers. You may unsubscribe at any time by clicking the unsubscribe link in any email we send, or by contacting us at <a href={`mailto:${SITE.email}`} class="text-stone-900 font-semibold underline">{SITE.email}</a>.
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="text-xl font-bold text-stone-900">2. How Our Android Apps Treat Your Records</h2>
+        <p>
+          Both <strong>The Simpler Budget</strong> and <strong>The Simpler Nutrition Tracker</strong> are engineered with an on-device architecture:
+        </p>
+        <ul class="list-disc pl-5 space-y-1.5 text-xs sm:text-sm">
+          <li><strong>No mandatory account:</strong> You do not need an account, password, or profile to use the apps.</li>
+          <li><strong>Local storage:</strong> Your expenses, envelope balances, receipt images, meal logs, and calorie estimates are stored strictly in local application storage on your Android device.</li>
+          <li><strong>No bank connections:</strong> The Simpler Budget does not request your online banking credentials, nor do we partner with aggregators like Plaid or Yodlee.</li>
+          <li><strong>On-device AI:</strong> Speech interpretation and vision drafting run locally on supported hardware. Raw audio recordings and receipt snapshots remain on your device.</li>
+        </ul>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="text-xl font-bold text-stone-900">3. Data Retention and Export</h2>
+        <p>
+          Because your records are stored locally on your device, you retain absolute custody of your data. Both apps confirmed for launch include features allowing you to export your records to standard formats (such as CSV) and make local file backups. If you uninstall the app, your locally stored data is cleared unless you have made a local backup file.
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="text-xl font-bold text-stone-900">4. Third-Party Services on the Website</h2>
+        <p>
+          Our prelaunch website is hosted on Cloudflare Pages. Cloudflare may process basic server request logs (IP addresses, user-agent headers) strictly for security and denial-of-service mitigation. We do not use third-party invasive behavioral tracking cookies or marketing pixels on this site.
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="text-xl font-bold text-stone-900">5. Contact Information</h2>
+        <p>
+          If you have questions about this privacy notice, our security practices, or your subscription, please reach out to:
+        </p>
+        <div class="p-4 bg-[#FAF8F5] rounded-xl border border-[#E7E2D8] text-xs space-y-1">
+          <p class="font-bold text-stone-900">{SITE.legalName}</p>
+          <p>Email: <a href={`mailto:${SITE.email}`} class="text-stone-900 font-medium underline">{SITE.email}</a></p>
+          <p>Domain: <a href={SITE.url} class="text-stone-900 font-medium underline">{SITE.domain}</a></p>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Back to home button -->
+    <div class="pt-6 border-t border-[#E7E2D8]">
+      <a
+        href="/"
+        class="inline-flex items-center gap-2 text-xs font-semibold text-stone-800 hover:text-stone-950 underline underline-offset-4"
+      >
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Back to Keep It Simpler homepage
+      </a>
+    </div>
+
+  </div>
+</Layout>

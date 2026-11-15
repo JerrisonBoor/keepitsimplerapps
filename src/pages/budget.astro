@@ -1,0 +1,542 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BudgetPreview from '../components/BudgetPreview.astro';
+import SignupForm from '../components/SignupForm.astro';
+import { getAppById } from '../data/apps';
+
+const app = getAppById('budget')!;
+---
+
+<Layout
+  title="The Simpler Budget | Android Envelope Budget App"
+  description="Know where your money goes with an envelope budgeting app built for Android. Track expenses, log purchases by voice or receipt, and budget without bank linking."
+  canonicalPath="/budget"
+  activeApp="budget"
+>
+  <!-- Hero Section -->
+  <section class="relative pt-12 pb-16 sm:pt-20 sm:pb-24 px-4 sm:px-6 overflow-hidden">
+    <!-- Subtle emerald background glow -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-emerald-100/40 blur-3xl -z-10 rounded-full pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto text-center space-y-6">
+      
+      <!-- Badges -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
+        <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+        <span>Coming soon for Android &bull; The Simpler Budget</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="text-4xl sm:text-6xl font-bold tracking-tight text-stone-900 text-balance leading-[1.12]">
+        Know where your money goes.
+      </h1>
+
+      <!-- Supporting copy -->
+      <p class="max-w-2xl mx-auto text-lg sm:text-xl text-stone-600 leading-relaxed text-balance">
+        Track income and expenses, set money aside with digital envelopes, and log purchases by voice or receipt. No bank connection required.
+      </p>
+
+      <!-- CTAs -->
+      <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+        <!-- Primary CTA: Get budget app updates -->
+        <a
+          href="#signup"
+          class="w-full sm:w-auto px-7 py-3.5 rounded-full font-semibold text-sm bg-emerald-800 hover:bg-emerald-900 text-white shadow-sm transition flex items-center justify-center gap-2"
+        >
+          <span>Get budget app updates</span>
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </a>
+
+        <!-- Secondary CTA: I'm interested in beta testing -->
+        <a
+          href="#signup?beta=true"
+          id="hero-beta-btn"
+          class="w-full sm:w-auto px-7 py-3.5 rounded-full font-semibold text-sm bg-white hover:bg-emerald-50/50 text-emerald-900 border border-emerald-200 shadow-2xs transition flex items-center justify-center"
+        >
+          I’m interested in beta testing
+        </a>
+      </div>
+
+      <div class="pt-2 text-xs text-stone-500">
+        Coming soon for Android &bull; Built-in AI drafts transactions from voice or receipts &bull; No bank linking
+      </div>
+
+    </div>
+
+    <!-- Live Preview Showcase -->
+    <div class="mt-12 sm:mt-16 max-w-md mx-auto">
+      <BudgetPreview />
+    </div>
+  </section>
+
+  <!-- Purchase Walkthrough: From Start to Finish -->
+  <section class="py-16 sm:py-24 px-4 sm:px-6 bg-[#F3EFE8]/50 border-y border-[#E7E2D8]">
+    <div class="max-w-5xl mx-auto space-y-16">
+      
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-3xl font-bold tracking-tight text-stone-900">
+          How logging a purchase works
+        </h2>
+        <p class="mt-3 text-stone-600 text-sm sm:text-base leading-relaxed">
+          From a natural voice note or receipt to a confirmed envelope transaction in seconds. Built-in AI drafts transactions from voice or receipts; you review and edit before anything is saved.
+        </p>
+      </div>
+
+      <!-- Step-by-step walkthrough cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Step 1: Voice Input -->
+        <div class="bg-white rounded-2xl p-6 border border-[#E7E2D8] shadow-xs relative flex flex-col justify-between">
+          <div>
+            <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 font-bold text-xs flex items-center justify-center mb-4 border border-emerald-300">
+              1
+            </div>
+            <h3 class="text-base font-bold text-stone-900 mb-2">
+              Speak naturally
+            </h3>
+            <p class="text-xs text-stone-600 leading-relaxed">
+              Tap the microphone icon on your Android phone and say:
+            </p>
+            <div class="mt-3 p-3 bg-emerald-50/70 rounded-xl border border-emerald-200/70 text-xs font-medium text-emerald-950 italic">
+              “I spent $12.50 on lunch at Panera.”
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-stone-100 text-[11px] text-stone-500">
+            Runs locally on your device without sending audio to cloud servers.
+          </div>
+        </div>
+
+        <!-- Step 2: Review Step -->
+        <div class="bg-white rounded-2xl p-6 border-2 border-emerald-700 shadow-sm relative flex flex-col justify-between">
+          <div class="absolute -top-3 right-4 px-2.5 py-0.5 rounded-full bg-emerald-800 text-white text-[10px] font-bold tracking-wide uppercase">
+            Review Step
+          </div>
+          <div>
+            <div class="w-8 h-8 rounded-full bg-emerald-800 text-white font-bold text-xs flex items-center justify-center mb-4">
+              2
+            </div>
+            <h3 class="text-base font-bold text-stone-900 mb-2">
+              Review amount, merchant &amp; envelope
+            </h3>
+            <p class="text-xs text-stone-600 leading-relaxed mb-3">
+              The app presents an editable transaction draft:
+            </p>
+            <div class="space-y-1.5 text-xs bg-stone-50 p-2.5 rounded-xl border border-stone-200">
+              <div class="flex justify-between">
+                <span class="text-stone-500">Amount:</span>
+                <span class="font-bold text-stone-900">$12.50</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-stone-500">Merchant:</span>
+                <span class="font-semibold text-stone-900">Panera Bread</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-stone-500">Category:</span>
+                <span class="font-semibold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">Dining Out</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-stone-100 text-[11px] text-stone-600 font-medium">
+            Tap any field to tweak before saving.
+          </div>
+        </div>
+
+        <!-- Step 3: Saved & Balance Updated -->
+        <div class="bg-white rounded-2xl p-6 border border-[#E7E2D8] shadow-xs relative flex flex-col justify-between">
+          <div>
+            <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 font-bold text-xs flex items-center justify-center mb-4 border border-emerald-300">
+              3
+            </div>
+            <h3 class="text-base font-bold text-stone-900 mb-2">
+              Envelope updated instantly
+            </h3>
+            <p class="text-xs text-stone-600 leading-relaxed">
+              Once you tap confirm, the expense is immediately deducted from your <strong>Dining Out</strong> digital envelope.
+            </p>
+            <div class="mt-3 p-3 bg-stone-50 rounded-xl border border-stone-200 text-xs">
+              <div class="flex justify-between font-medium text-stone-700">
+                <span>Dining Out remaining</span>
+                <span class="font-bold text-stone-900">$87.50</span>
+              </div>
+              <div class="w-full bg-stone-200 h-1.5 rounded-full mt-1.5 overflow-hidden">
+                <div class="bg-emerald-600 h-full rounded-full" style="width: 58%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-stone-100 text-[11px] text-stone-500">
+            Stored directly in your phone’s local database.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Receipt Scan Example -->
+      <div class="bg-white rounded-3xl p-6 sm:p-10 border border-[#E7E2D8] shadow-xs">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div class="space-y-4">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+              </svg>
+              Receipt scan example
+            </div>
+            <h3 class="text-2xl font-bold text-stone-900">
+              Prefer snapping paper receipts?
+            </h3>
+            <p class="text-sm text-stone-600 leading-relaxed">
+              When you get a paper receipt at the store, snap a quick photo. On-device vision detects the store name, date, and final total, then creates an editable draft for you to verify.
+            </p>
+            <ul class="space-y-2 text-xs text-stone-700">
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-emerald-700 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span><strong>No manual calculation:</strong> Subtotal, tax, and total automatically identified.</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-emerald-700 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span><strong>Full review control:</strong> Check the parsed values against the physical slip before saving.</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-emerald-700 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span><strong>Offline privacy:</strong> The image processing stays right on your Android phone.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Receipt Draft Visual Component -->
+          <div class="bg-[#FAF8F5] p-5 rounded-2xl border border-dashed border-stone-300 space-y-3 font-mono text-xs">
+            <div class="flex justify-between items-center pb-2 border-b border-stone-200">
+              <span class="font-bold text-stone-800">TRADER JOE’S #421</span>
+              <span class="text-[10px] text-stone-500">TODAY 4:15 PM</span>
+            </div>
+            <div class="space-y-1 text-stone-600 text-[11px]">
+              <div class="flex justify-between">
+                <span>ORGANIC BANANAS</span>
+                <span>$1.79</span>
+              </div>
+              <div class="flex justify-between">
+                <span>ALMOND MILK 64OZ</span>
+                <span>$3.49</span>
+              </div>
+              <div class="flex justify-between">
+                <span>SOURDOUGH BREAD</span>
+                <span>$4.29</span>
+              </div>
+              <div class="flex justify-between">
+                <span>CHICKEN BREAST 2LB</span>
+                <span>$11.98</span>
+              </div>
+            </div>
+            <div class="pt-2 border-t border-stone-300 flex justify-between font-bold text-sm text-stone-900">
+              <span>TOTAL DRAFTED:</span>
+              <span class="text-emerald-800">$21.55</span>
+            </div>
+            <div class="pt-1 text-[11px] font-sans text-stone-600 bg-white p-2.5 rounded-lg border border-stone-200 flex items-center justify-between">
+              <span>Assigned envelope:</span>
+              <span class="font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">Groceries</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Digital Envelopes Introduction Section -->
+  <section class="py-16 sm:py-24 px-4 sm:px-6">
+    <div class="max-w-5xl mx-auto space-y-12">
+      
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-3xl font-bold tracking-tight text-stone-900">
+          Digital envelopes for stress-free spending
+        </h2>
+        <p class="mt-3 text-stone-600 text-sm sm:text-base leading-relaxed">
+          Envelope budgeting is simple: you divide your available money into purposeful categories before you spend it. When the envelope is empty, you know to pause or move funds deliberately.
+        </p>
+      </div>
+
+      <!-- 3 Key Envelopes: Groceries, Dining Out, Gas -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Groceries -->
+        <div class="bg-white rounded-2xl p-6 border border-[#E7E2D8] shadow-xs space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+              Groceries
+            </span>
+            <span class="text-xs text-stone-500 font-medium">Monthly cycle</span>
+          </div>
+          <div>
+            <div class="text-2xl font-bold text-stone-900">$320.00</div>
+            <span class="text-xs text-stone-500">remaining of $450 budgeted</span>
+          </div>
+          <div class="w-full bg-stone-100 h-2 rounded-full overflow-hidden">
+            <div class="bg-emerald-600 h-full rounded-full" style="width: 71%"></div>
+          </div>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            Covers supermarket trips, weekly meal prep, and everyday kitchen essentials.
+          </p>
+        </div>
+
+        <!-- Dining Out -->
+        <div class="bg-white rounded-2xl p-6 border border-[#E7E2D8] shadow-xs space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+              Dining Out
+            </span>
+            <span class="text-xs text-stone-500 font-medium">Monthly cycle</span>
+          </div>
+          <div>
+            <div class="text-2xl font-bold text-stone-900">$87.50</div>
+            <span class="text-xs text-stone-500">remaining of $150 budgeted</span>
+          </div>
+          <div class="w-full bg-stone-100 h-2 rounded-full overflow-hidden">
+            <div class="bg-emerald-500 h-full rounded-full" style="width: 58%"></div>
+          </div>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            Dedicated for coffee shops, takeout, lunches with coworkers, and weekend dining.
+          </p>
+        </div>
+
+        <!-- Gas -->
+        <div class="bg-white rounded-2xl p-6 border border-[#E7E2D8] shadow-xs space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+              Gas &amp; Commute
+            </span>
+            <span class="text-xs text-stone-500 font-medium">Monthly cycle</span>
+          </div>
+          <div>
+            <div class="text-2xl font-bold text-stone-900">$65.00</div>
+            <span class="text-xs text-stone-500">remaining of $100 budgeted</span>
+          </div>
+          <div class="w-full bg-stone-100 h-2 rounded-full overflow-hidden">
+            <div class="bg-emerald-600 h-full rounded-full" style="width: 65%"></div>
+          </div>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            Tracks fuel fill-ups, parking fees, and daily transportation costs cleanly.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Privacy & Manual Entry Guarantees -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+        <div class="p-4 bg-[#FAF8F5] rounded-2xl border border-[#E7E2D8] flex items-start gap-3">
+          <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+            </svg>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-stone-900">Direct manual entry always available</h4>
+            <p class="text-xs text-stone-600 mt-1 leading-relaxed">
+              Prefer typing? You don’t have to use voice or camera. A fast numeric keypad with custom categories and recent merchants is always one tap away.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-4 bg-[#FAF8F5] rounded-2xl border border-[#E7E2D8] flex items-start gap-3">
+          <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-stone-900">Confirmed export &amp; local backup</h4>
+            <p class="text-xs text-stone-600 mt-1 leading-relaxed">
+              Confirmed for launch: export your complete ledger to standard CSV files and perform local backups to your phone storage anytime.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Planned Tiers Section -->
+  <section class="py-16 sm:py-20 px-4 sm:px-6 bg-[#F3EFE8]/40 border-t border-[#E7E2D8]">
+    <div class="max-w-4xl mx-auto space-y-10">
+      
+      <div class="text-center max-w-xl mx-auto">
+        <h2 class="text-3xl font-bold tracking-tight text-stone-900">
+          Planned Tiers
+        </h2>
+        <p class="mt-2 text-stone-600 text-xs sm:text-sm leading-relaxed">
+          Transparent, straightforward options planned for the Android launch. Pricing and trial lengths will be announced closer to release.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        
+        <!-- Free Tier Card -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-[#E7E2D8] shadow-xs flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-bold text-stone-900">Free</h3>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-stone-100 text-stone-700 border border-stone-200">
+                Planned
+              </span>
+            </div>
+            <p class="text-xs text-stone-600 mb-6">
+              Full core envelope budgeting designed to remain accessible for everyday use.
+            </p>
+            <ul class="space-y-3 text-xs text-stone-700">
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Full digital envelope budgeting &amp; balance tracking</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Single voice entry at a time</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Single receipt scan at a time</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Direct manual entry without limits</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-stone-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="text-stone-500">Planned to include non-intrusive ads</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-8 pt-4 border-t border-stone-100 text-[11px] text-stone-500">
+            No bank connection required. All budget records stay on your phone.
+          </div>
+        </div>
+
+        <!-- Plus Tier Card -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border-2 border-emerald-800 shadow-sm flex flex-col justify-between relative">
+          <div class="absolute -top-3 right-6 px-3 py-0.5 rounded-full bg-emerald-800 text-white text-[11px] font-bold tracking-wide uppercase">
+            Planned Upgrade
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-bold text-stone-900">Plus</h3>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
+                Premium
+              </span>
+            </div>
+            <p class="text-xs text-stone-600 mb-6">
+              For power budgeters who want rapid batch capturing and zero distractions.
+            </p>
+            <ul class="space-y-3 text-xs text-stone-700">
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span><strong>Everything in Free</strong></span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span><strong>Ad-free experience:</strong> Removes all ads</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span><strong>Batch voice notes:</strong> Speak multiple expenses in one flow</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span><strong>Continuous receipt capture:</strong> Scan multiple receipts in a row</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Priority on-device model optimizations</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-8 pt-4 border-t border-stone-100 text-[11px] text-stone-500">
+            Pricing and trial details will be finalized prior to public launch.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 sm:py-24 px-4 sm:px-6">
+    <div class="max-w-3xl mx-auto space-y-8">
+      <div class="text-center">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-stone-900">
+          Frequently Asked Questions
+        </h2>
+        <p class="mt-2 text-stone-600 text-sm">
+          Everything you need to know about The Simpler Budget.
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        {app.faq.map((item, index) => (
+          <details class="group bg-white rounded-2xl border border-[#E7E2D8] p-5 transition [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between font-semibold text-stone-900 cursor-pointer text-sm sm:text-base select-none">
+              <span>{item.question}</span>
+              <span class="ml-4 shrink-0 w-6 h-6 rounded-full bg-stone-100 group-open:bg-emerald-100 group-open:text-emerald-800 text-stone-500 flex items-center justify-center transition">
+                <svg class="w-3.5 h-3.5 transform group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </summary>
+            <p class="mt-3 text-stone-600 text-xs sm:text-sm leading-relaxed border-t border-stone-100 pt-3">
+              {item.answer}
+            </p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Signup Form prefilled for Budget -->
+  <SignupForm
+    initialApp="budget"
+    title="Get updates on The Simpler Budget"
+    subtitle="Be first in line when beta slots open. Coming soon for Android on Google Play."
+    accent="budget"
+  />
+</Layout>
+
+<script>
+  // Handle hero beta CTA click
+  const betaBtn = document.getElementById('hero-beta-btn');
+  betaBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    const signupSec = document.getElementById('signup');
+    const betaCheckbox = document.getElementById('beta-interest') as HTMLInputElement | null;
+    if (betaCheckbox) {
+      betaCheckbox.checked = true;
+    }
+    signupSec?.scrollIntoView({ behavior: 'smooth' });
+    const emailInput = document.getElementById('signup-email');
+    emailInput?.focus();
+  });
+</script>

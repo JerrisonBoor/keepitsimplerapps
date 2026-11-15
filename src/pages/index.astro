@@ -1,0 +1,274 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BudgetPreview from '../components/BudgetPreview.astro';
+import NutritionPreview from '../components/NutritionPreview.astro';
+import SignupForm from '../components/SignupForm.astro';
+import { APPS } from '../data/apps';
+
+const budgetApp = APPS.find((a) => a.id === 'budget')!;
+const nutritionApp = APPS.find((a) => a.id === 'nutrition')!;
+---
+
+<Layout
+  title="Keep It Simpler | AI Budget and Nutrition Apps"
+  description="Everyday tracking, made simpler with AI. Say what you spent, scan a receipt, or describe what you ate. Built-in AI gives you a draft to review before you save. No app account required."
+  canonicalPath="/"
+  activeApp="home"
+>
+  <!-- Hero Section -->
+  <section class="relative pt-12 pb-16 sm:pt-20 sm:pb-24 px-4 sm:px-6 overflow-hidden">
+    <!-- Subtle warm glow in background -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gradient-to-tr from-amber-100/40 via-emerald-100/30 to-stone-100/20 blur-3xl -z-10 rounded-full pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto text-center space-y-6">
+      
+      <!-- Trust line pill -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#F3EFE8] text-stone-800 border border-[#E2DBD0] shadow-2xs">
+        <svg class="w-4 h-4 text-emerald-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+        <span>No app account required. Your records stay on your phone.</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="text-4xl sm:text-6xl font-bold tracking-tight text-stone-900 text-balance leading-[1.12]">
+        Everyday tracking, made simpler with AI.
+      </h1>
+
+      <!-- Supporting copy -->
+      <p class="max-w-2xl mx-auto text-lg sm:text-xl text-stone-600 leading-relaxed text-balance">
+        Say what you spent, scan a receipt, or describe what you ate. Built-in AI gives you a draft to review before you save.
+      </p>
+
+      <!-- CTAs -->
+      <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+        <!-- Primary CTA: Explore the apps (scroll to product cards) -->
+        <a
+          href="#apps"
+          class="w-full sm:w-auto px-7 py-3.5 rounded-full font-semibold text-sm bg-stone-900 hover:bg-stone-800 text-white shadow-sm transition flex items-center justify-center gap-2"
+        >
+          <span>Explore the apps</span>
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </a>
+
+        <!-- Secondary CTA: Get launch updates (scroll to signup form) -->
+        <a
+          href="#signup"
+          class="w-full sm:w-auto px-7 py-3.5 rounded-full font-semibold text-sm bg-white hover:bg-stone-50 text-stone-800 border border-stone-300 shadow-2xs transition flex items-center justify-center"
+        >
+          Get launch updates
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Product Cards Section -->
+  <section id="apps" class="py-12 sm:py-16 px-4 sm:px-6 bg-[#F3EFE8]/40 border-y border-[#E7E2D8] scroll-mt-16">
+    <div class="max-w-6xl mx-auto">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-stone-900">
+          The first two apps in the family
+        </h2>
+        <p class="mt-2 text-stone-600 text-sm sm:text-base">
+          A family of apps designed for everyday tracking. Planned to launch first on Android, built to keep tracking simple and affordable.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+        
+        <!-- Product Card 1: The Simpler Budget -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-[#E7E2D8] shadow-sm flex flex-col justify-between hover:border-emerald-300 transition group">
+          <div class="space-y-4">
+            
+            <!-- Availability badge & category -->
+            <div class="flex items-center justify-between">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                Coming soon for Android
+              </span>
+              <span class="text-xs font-medium text-stone-500">
+                Budget &amp; Envelopes
+              </span>
+            </div>
+
+            <!-- Title & Copy -->
+            <div>
+              <h3 class="text-2xl font-bold text-stone-900 group-hover:text-emerald-900 transition">
+                The Simpler Budget
+              </h3>
+              <p class="mt-2 text-stone-600 text-sm sm:text-base leading-relaxed">
+                See where your money goes, plan spending with envelopes, and turn a voice note or receipt into a transaction you can review.
+              </p>
+            </div>
+
+            <!-- Key Highlights Pill list -->
+            <div class="flex flex-wrap gap-2 pt-1 text-xs text-stone-600">
+              <span class="bg-[#FAF8F5] px-2.5 py-1 rounded-md border border-[#E7E2D8]">
+                &bull; No bank login required
+              </span>
+              <span class="bg-[#FAF8F5] px-2.5 py-1 rounded-md border border-[#E7E2D8]">
+                &bull; Voice &amp; receipt drafts
+              </span>
+              <span class="bg-[#FAF8F5] px-2.5 py-1 rounded-md border border-[#E7E2D8]">
+                &bull; Local envelope balances
+              </span>
+            </div>
+
+            <!-- Android Device Preview -->
+            <div class="pt-4 pb-2">
+              <BudgetPreview />
+            </div>
+
+          </div>
+
+          <!-- Descriptive Link to Budget Page -->
+          <div class="pt-6 border-t border-stone-100 mt-6">
+            <a
+              href="/budget"
+              class="inline-flex items-center justify-between w-full px-5 py-3.5 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white font-semibold text-sm transition shadow-2xs group/btn"
+            >
+              <span>Explore The Simpler Budget &amp; view demo</span>
+              <svg class="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Product Card 2: The Simpler Nutrition Tracker -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-[#E7E2D8] shadow-sm flex flex-col justify-between hover:border-amber-300 transition group">
+          <div class="space-y-4">
+            
+            <!-- Availability badge & category -->
+            <div class="flex items-center justify-between">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-900 border border-amber-200">
+                <span class="w-2 h-2 rounded-full bg-amber-600"></span>
+                Coming soon for Android
+              </span>
+              <span class="text-xs font-medium text-stone-500">
+                Food &amp; Macro Log
+              </span>
+            </div>
+
+            <!-- Title & Copy -->
+            <div>
+              <h3 class="text-2xl font-bold text-stone-900 group-hover:text-amber-900 transition">
+                The Simpler Nutrition Tracker
+              </h3>
+              <p class="mt-2 text-stone-600 text-sm sm:text-base leading-relaxed">
+                Say what you ate, review an estimate of calories and macros, and get on with your day.
+              </p>
+            </div>
+
+            <!-- Key Highlights Pill list -->
+            <div class="flex flex-wrap gap-2 pt-1 text-xs text-stone-600">
+              <span class="bg-[#FAF8F5] px-2.5 py-1 rounded-md border border-[#E7E2D8]">
+                &bull; Voice meal descriptions
+              </span>
+              <span class="bg-[#FAF8F5] px-2.5 py-1 rounded-md border border-[#E7E2D8]">
+                &bull; Editable estimates
+              </span>
+              <span class="bg-[#FAF8F5] px-2.5 py-1 rounded-md border border-[#E7E2D8]">
+                &bull; On-device meal history
+              </span>
+            </div>
+
+            <!-- Android Device Preview -->
+            <div class="pt-4 pb-2">
+              <NutritionPreview />
+            </div>
+
+          </div>
+
+          <!-- Descriptive Link to Nutrition Page -->
+          <div class="pt-6 border-t border-stone-100 mt-6">
+            <a
+              href="/nutrition"
+              class="inline-flex items-center justify-between w-full px-5 py-3.5 rounded-xl bg-amber-800 hover:bg-amber-900 text-white font-semibold text-sm transition shadow-2xs group/btn"
+            >
+              <span>Explore The Simpler Nutrition &amp; view demo</span>
+              <svg class="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section: “A little AI. A lot less typing.” -->
+  <section class="py-16 sm:py-24 px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto bg-stone-900 text-stone-100 rounded-3xl p-8 sm:p-14 relative overflow-hidden">
+      <!-- Background accent glow -->
+      <div class="absolute -top-24 -right-24 w-80 h-80 bg-emerald-600/20 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-amber-600/20 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="relative z-10 space-y-6">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-stone-800 text-stone-300 border border-stone-700">
+          <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+          Our AI Philosophy
+        </div>
+
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+          A little AI. A lot less typing.
+        </h2>
+
+        <!-- Updated required copy explaining on-device AI and review before save -->
+        <p class="text-base sm:text-lg text-stone-300 leading-relaxed font-normal">
+          On supported phones, the AI runs right on your device. That helps us keep costs down and design apps that stay affordable. You’re always in control of what gets saved—you can review and edit every draft before it touches your ledger or meal history.
+        </p>
+
+        <!-- 3 Feature Columns -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-stone-800 text-sm">
+          <div class="space-y-1.5">
+            <div class="font-bold text-white flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              Review before saving
+            </div>
+            <p class="text-stone-400 text-xs leading-relaxed">
+              Every voice entry or receipt produces an editable draft first. You inspect amounts, vendors, and ingredients before anything is saved.
+            </p>
+          </div>
+
+          <div class="space-y-1.5">
+            <div class="font-bold text-white flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-stone-400"></span>
+              On-device privacy
+            </div>
+            <p class="text-stone-400 text-xs leading-relaxed">
+              Your sensitive receipts, meal habits, and purchase amounts don’t get logged into central analytics databases. Your records live in local phone storage.
+            </p>
+          </div>
+
+          <div class="space-y-1.5">
+            <div class="font-bold text-white flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+              Affordable by design
+            </div>
+            <p class="text-stone-400 text-xs leading-relaxed">
+              Running models on supported phones eliminates recurring cloud inference bills, allowing us to keep pricing accessible and honest for everyone.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Homepage Signup Form (Select either or both apps) -->
+  <SignupForm
+    initialApp="both"
+    title="Stay updated on the Keep It Simpler family"
+    subtitle="Choose which apps you want updates for, or check the box to express interest in beta testing for our first planned launch on Android."
+    accent="neutral"
+  />
+</Layout>
