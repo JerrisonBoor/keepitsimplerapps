@@ -11,7 +11,7 @@ binding = "DB"
 database_name = "keepitsimpler-signups"
 database_id = "d9557df3-fef6-4da9-96f4-85a7519ff9c9"
 
-[send_email]
+[[send_email]]
 name = "SEND_EMAIL"
 
 [vars]
