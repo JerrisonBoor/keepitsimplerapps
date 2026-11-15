@@ -34,7 +34,7 @@ export default {
           });
         }
 
-        // 1. Save to Cloudflare D1 (if database is bound)
+        // 1. Save to Cloudflare D1
         if (env.DB) {
           try {
             await env.DB.prepare(
@@ -47,17 +47,17 @@ export default {
           }
         }
 
-        // 2. Send email notification via Cloudflare Email Routing (if bound and configured)
+        // 2. Send email notification via Cloudflare Email Routing from onboarded domain
         if (env.SEND_EMAIL && env.NOTIFICATION_EMAIL) {
           try {
-            const sender = 'notifications@keepitsimpler.app';
+            const sender = 'notifications@foggybusiness.com';
             const msg = createMimeMessage();
             msg.setSender({ name: 'Keep It Simpler', addr: sender });
             msg.setRecipient(env.NOTIFICATION_EMAIL);
             msg.setSubject(`🚀 New Prelaunch Signup: ${email}`);
             msg.addMessage({
               contentType: 'text/plain',
-              data: `New prelaunch signup received for Keep It Simpler!\n\nEmail: ${email}\nApps: ${apps}\nBeta Interest: ${betaInterest}\nTimestamp: ${date}\n`,
+              data: `New prelaunch signup received for Keep It Simpler!\n\nSubscriber Email: ${email}\nApps: ${apps}\nBeta Interest: ${betaInterest}\nTimestamp: ${date}\n`,
             });
 
             const emailMsg = new EmailMessage(sender, env.NOTIFICATION_EMAIL, msg.asRaw());
