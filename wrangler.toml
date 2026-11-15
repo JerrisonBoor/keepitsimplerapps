@@ -1,13 +1,6 @@
 #:schema node_modules/wrangler/config-schema.json
 name = "keepitsimplerapps"
 compatibility_date = "2026-11-15"
-pages_build_output_dir = "dist"
 
-# Optional Cloudflare KV binding for prelaunch signups:
-# [[kv_namespaces]]
-# binding = "SIGNUPS_KV"
-# id = "<your-cloudflare-kv-namespace-id>"
-
-# Optional Environment Variables (e.g. Webhook for notifications):
-# [vars]
-# SIGNUP_WEBHOOK_URL = "https://discord.com/api/webhooks/..."
+[assets]
+directory = "./dist"
